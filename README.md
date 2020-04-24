@@ -1,4 +1,4 @@
 # shahzaibasif.github.io
-My Portfolio 
+My Portfolio CV
 
 Link: https://shahzaibasif.github.io/
