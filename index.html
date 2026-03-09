@@ -31,7 +31,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── DARK MODE VARIABLES ── */
-[data-theme="dark"] {
+:root[data-theme="dark"], [data-theme="dark"] {
   --ink:     #e8e4dd;
   --paper:   #0e0f13;
   --cream:   #161820;
@@ -47,6 +47,8 @@ html { scroll-behavior: smooth; }
   --muted:   #9e9890;
   --dim:     #6b6560;
 }
+
+*, *::before, *::after { cursor: none !important; }
 
 body {
   background: var(--paper);
@@ -708,6 +710,30 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
 /* ─────────────────────────────────────────
    CERTIFICATIONS
 ───────────────────────────────────────── */
+.cert-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cert-group-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cert-group-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--stroke2);
+}
+
 .cert-list {
   display: flex;
   flex-direction: column;
@@ -719,31 +745,57 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
 }
 
 .cert-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
-  padding: 16px 20px;
+  padding: 13px 20px;
   border-bottom: 1px solid var(--stroke2);
   background: var(--paper);
   transition: background 0.18s, border-color 0.35s;
-  gap: 16px;
+  gap: 12px;
 }
 .cert-row:last-child { border-bottom: none; }
 .cert-row:hover { background: var(--cream); }
 
 .cert-name {
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 500;
   color: var(--ink);
+  line-height: 1.4;
 }
 
 .cert-issuer {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--dim);
   white-space: nowrap;
+}
+
+.cert-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.18s, color 0.18s;
+  white-space: nowrap;
+  border: 1px solid rgba(192,57,43,0.2);
+  padding: 3px 8px;
+  border-radius: 2px;
+  background: rgba(192,57,43,0.04);
+}
+.cert-link:hover { opacity: 1; background: rgba(192,57,43,0.09); }
+.cert-link svg { flex-shrink: 0; }
+
+.cert-no-link {
+  width: 70px; /* placeholder to keep column alignment */
 }
 
 /* ─────────────────────────────────────────
@@ -881,7 +933,7 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
   ═══════════════════════════ -->
   <div class="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow">AI / ML Research &amp; Development</div>
+      <div class="hero-eyebrow">AI / ML Research &amp; Development Engineer</div>
       <h1 class="hero-name">Shahzaib<br><span>Asif</span></h1>
       <p class="hero-title">
         Designing, training, and deploying production-grade machine learning systems across computer vision, sensor analytics, HPC, and large-scale data environments for 5+ years.
@@ -893,7 +945,7 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
         </span>
         <span class="meta-chip">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          <a href="mailto:official.shahzaibasif@gmail.com">official.shahzaibasif@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#452a23232c262c24296b362d242d3f242c2724362c23052228242c296b262a28"><span class="__cf_email__" data-cfemail="600f0606090309010c4e130801081a0109020113090620070d01090c4e030f0d">[email&#160;protected]</span></a>
         </span>
         <span class="meta-chip">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -941,7 +993,7 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
         <div class="stat-key">Medal Honours</div>
       </div>
       <div class="stat-block">
-        <div class="stat-val">4<em>+</em></div>
+        <div class="stat-val">23<em>+</em></div>
         <div class="stat-key">Certifications</div>
       </div>
     </div>
@@ -1220,23 +1272,215 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
       <span class="sec-title">Certifications</span>
       <span class="sec-line"></span>
     </div>
-    <div class="cert-list">
-      <div class="cert-row">
-        <span class="cert-name">Google AI Essentials</span>
-        <span class="cert-issuer">Google</span>
+
+    <div class="cert-groups">
+
+      <!-- AI & ML -->
+      <div>
+        <div class="cert-group-label">AI &amp; Machine Learning</div>
+        <div class="cert-list">
+          <div class="cert-row">
+            <span class="cert-name">Google AI Essentials</span>
+            <span class="cert-issuer">Google · Coursera</span>
+            <a href="https://www.credly.com/badges/d9fff900-5ec8-4caf-91e1-02735297f882/linked_in_profile" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Digital Mindset</span>
+            <span class="cert-issuer">IBM</span>
+            <a href="https://www.credly.com/badges/38bdc4a9-577c-46ad-960a-e1b864e2b6d0/linked_in_profile" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">What Is Generative AI?</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/ae83a7e8705b5ab7f7ab6576f200ba1f4d0716593746e71986ff2492ac9e4d74" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+
+        </div>
       </div>
-      <div class="cert-row">
-        <span class="cert-name">Generative AI with Transformers</span>
-        <span class="cert-issuer">IBM</span>
+
+      <!-- Prompt Engineering & LLMs -->
+      <div>
+        <div class="cert-group-label">Prompt Engineering &amp; LLMs</div>
+        <div class="cert-list">
+          <div class="cert-row">
+            <span class="cert-name">ChatGPT Prompt Engineering for Developers</span>
+            <span class="cert-issuer">DeepLearning.AI</span>
+            <a href="https://learn.deeplearning.ai/accomplishments/0e763e77-4879-4918-b9e4-429a05d6ba1b" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Building Systems with the ChatGPT API</span>
+            <span class="cert-issuer">DeepLearning.AI</span>
+            <a href="https://learn.deeplearning.ai/accomplishments/e319ff38-d951-429e-abfb-c004702cb7cb" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">LangChain Chat with Your Data</span>
+            <span class="cert-issuer">DeepLearning.AI</span>
+            <a href="https://learn.deeplearning.ai/accomplishments/cd6ce613-80b4-453a-a4b7-9aef7c0d93a4" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Introduction to Prompt Engineering for Generative AI</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/e8e55ef85a38e67bab7311364af92c84a7728d170d6bd4b7e3a0e4f2c4e95746" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="cert-row">
-        <span class="cert-name">Google IT Automation with Python Professional Certificate</span>
-        <span class="cert-issuer">Google</span>
+
+      <!-- Deep Learning & Computer Vision -->
+      <div>
+        <div class="cert-group-label">Deep Learning &amp; Computer Vision</div>
+        <div class="cert-list">
+          <div class="cert-row">
+            <span class="cert-name">PyTorch Essential Training: Deep Learning</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/0e65e4c91f6f7be4dc900732b83d7926432a76f539ebf5c8b2da806625c79dd8" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">TensorFlow: Working with Images</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/8ffac2a679274e41de5f0b47254ac184d2e42e07dc26e807b0cf36c421ec5212" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Computer Vision on the Raspberry Pi 4</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/eb47ac0589a5a5c008f4fad2edba496a08eabddabcc5c4cc6bd80804766cae08" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Edge Computing for Computer Vision</span>
+            <span class="cert-issuer">VISpro · SEECS NUST</span>
+            <span class="cert-no-link"></span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">TensorFlow World Extended Islamabad</span>
+            <span class="cert-issuer">Google Dev Groups</span>
+            <span class="cert-no-link"></span>
+          </div>
+        </div>
       </div>
-      <div class="cert-row">
-        <span class="cert-name">ChatGPT Prompt Engineering for Developers</span>
-        <span class="cert-issuer">OpenAI / DeepLearning.AI</span>
+
+      <!-- Data Science & Python -->
+      <div>
+        <div class="cert-group-label">Data Science &amp; Python</div>
+        <div class="cert-list">
+          <div class="cert-row">
+            <span class="cert-name">Foundations of Data Science</span>
+            <span class="cert-issuer">Coursera</span>
+            <a href="https://www.coursera.org/account/accomplishments/certificate/QLNYSYS8L7YQ" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Get Started with Python</span>
+            <span class="cert-issuer">Coursera</span>
+            <a href="https://www.coursera.org/account/accomplishments/certificate/G25YEVN6MMSX" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+        </div>
       </div>
+
+      <!-- Leadership & Professional -->
+      <div>
+        <div class="cert-group-label">Leadership &amp; Professional Development</div>
+        <div class="cert-list">
+          <div class="cert-row">
+            <span class="cert-name">How to Train Your Brain for Maximum Growth</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/c413b98e1cf5ce1e8a29cdd2fedf05767d98f3cb71a74434f1f6278f0d177659" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Leadership Mindsets</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/bac4b7ab6e8a4b20d5109672176f3697d5dc7af23c2ddb3a5627c8175ee79843" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Leading with a Growth Mindset</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/0205246e40c7fa9793370452092319048e72e8611980133a63ce85cd23d65eaf" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Nano Tips to Prepare for Public Speaking</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/b1fa03ae2f1ac9e6d4a2e697165fa06cb08faa988563558ecf9b993d66af277a" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Public Speaking Foundations</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/2d709879bb2c2f8e24161b70437f26ad079c506821b225dac4c8670fae876a3f" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">How to Speak So People Want to Listen</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/e62960603fee89915a850402139dd24b0eac311129fb7b22bbe9a8f7e16bb810" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Gretchen Rubin on Creating Great Workplace Habits</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/aa63e6220076f9d4fb5e862758256db71681c4ff1f4ff553ed37965284fdd7b3" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+          <div class="cert-row">
+            <span class="cert-name">Healthy Building Foundations</span>
+            <span class="cert-issuer">LinkedIn</span>
+            <a href="https://www.linkedin.com/learning/certificates/e7c97e6ce1df342281eae340629c0f732ef46fb479ea52e870975fbfe127e795" target="_blank" class="cert-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Credential
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1250,11 +1494,11 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
       <span class="sec-line"></span>
     </div>
     <div class="contact-grid">
-      <a href="mailto:official.shahzaibasif@gmail.com" class="contact-card">
+      <a href="/cdn-cgi/l/email-protection#066960606f656f676a28756e676e7c676f6467756f6046616b676f6a2865696b" class="contact-card">
         <div class="contact-icon">✉️</div>
         <div>
           <div class="contact-label">Email</div>
-          <div class="contact-val">official.shahzaibasif@gmail.com</div>
+          <div class="contact-val"><span class="__cf_email__" data-cfemail="a8c7cecec1cbc1c9c486dbc0c9c0d2c9c1cac9dbc1cee8cfc5c9c1c486cbc7c5">[email&#160;protected]</span></div>
         </div>
       </a>
 
@@ -1280,21 +1524,25 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
   // ── DARK MODE ──
   const toggle = document.getElementById('themeToggle');
   const label  = document.getElementById('toggleLabel');
-  const html   = document.body;
 
-  // Respect OS preference on first load
+  // Apply theme to <html> element so CSS [data-theme] selectors work everywhere
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme);
+    label.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+  }
+
+  // Respect OS preference on first load, then localStorage
   const stored = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = stored || (prefersDark ? 'dark' : 'light');
-  html.setAttribute('data-theme', initialTheme);
-  label.textContent = initialTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+  applyTheme(initialTheme);
 
   toggle.addEventListener('click', () => {
-    const isDark = html.getAttribute('data-theme') === 'dark';
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const next = isDark ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
+    applyTheme(next);
     localStorage.setItem('theme', next);
-    label.textContent = next === 'dark' ? 'Light Mode' : 'Dark Mode';
   });
 
   // ── CUSTOM CURSOR ──
@@ -1304,8 +1552,8 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    cur.style.left  = mx + 'px';
-    cur.style.top   = my + 'px';
+    cur.style.left = mx + 'px';
+    cur.style.top  = my + 'px';
   });
 
   (function animRing() {
@@ -1316,18 +1564,18 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
     requestAnimationFrame(animRing);
   })();
 
-  // Hover states for cursor
+  // Expand cursor on interactive elements
   document.querySelectorAll('a, .proj-card, .edu-card, .cert-row, .stat-block, .contact-card, .theme-toggle').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      cur.style.width  = '14px';
-      cur.style.height = '14px';
+      cur.style.width   = '14px';
+      cur.style.height  = '14px';
       ring.style.width  = '48px';
       ring.style.height = '48px';
       ring.style.opacity = '0.6';
     });
     el.addEventListener('mouseleave', () => {
-      cur.style.width  = '8px';
-      cur.style.height = '8px';
+      cur.style.width   = '8px';
+      cur.style.height  = '8px';
       ring.style.width  = '32px';
       ring.style.height = '32px';
       ring.style.opacity = '0.4';
@@ -1335,11 +1583,11 @@ section:nth-of-type(7) { animation-delay: 0.6s; }
   });
 
   document.addEventListener('mouseleave', () => {
-    cur.style.opacity = '0';
+    cur.style.opacity  = '0';
     ring.style.opacity = '0';
   });
   document.addEventListener('mouseenter', () => {
-    cur.style.opacity = '1';
+    cur.style.opacity  = '1';
     ring.style.opacity = '0.4';
   });
 </script>
