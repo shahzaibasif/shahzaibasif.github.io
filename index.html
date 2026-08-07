@@ -1253,6 +1253,25 @@ section {
   text-transform: uppercase;
   text-align: right;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cert-link {
+  color: var(--ink-faint);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cert-link:hover {
+  color: var(--accent);
+}
+
+.cert-separator {
+  opacity: 0.7;
 }
 
 @media (max-width: 900px) {
@@ -2063,10 +2082,25 @@ footer a:hover { color: var(--accent); }
 
     <div class="experience-list">
       <div class="exp-item">
-        <div class="exp-date">
-          10/2024 — Present
-          <div class="exp-current">Now</div>
+        <div class="exp-date">06/2026 — Ongoing</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Physicist ML/AI Data Scientist Software Architect</div>
+              <div class="exp-company">CyberWissen — Remote, Netherlands</div>
+            </div>
+            <span class="exp-arrow">→</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Architected and developed scalable full-stack AI applications using <strong>Python</strong>, <strong>FastAPI</strong>, and <strong>React</strong>, delivering production-ready REST APIs and responsive frontend interfaces for enterprise applications.</li>
+            <li>Collaborated in an Agile remote engineering team using <strong>Git/GitHub</strong>, code reviews, and pull requests while delivering production-ready features and resolving technical conflicts under tight deadlines.</li>
+            <li>Designed and implemented scalable FastAPI backend services with RESTful APIs, integrated PostgreSQL databases, and optimized business logic for enterprise AI platform development.</li>
+          </ul>
         </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">10/2024 — 03/2026</div>
         <div class="exp-content">
           <div class="exp-header">
             <div>
@@ -2076,9 +2110,9 @@ footer a:hover { color: var(--accent); }
             <span class="exp-arrow">→</span>
           </div>
           <ul class="exp-bullets">
-            <li>Engineered <strong>LLM-powered automation pipelines</strong> integrated with messaging APIs and backend services, dramatically reducing manual research overhead.</li>
-            <li>Containerized ML systems using Docker for consistent, reproducible deployments across multi-cloud and on-premise environments.</li>
-            <li>Transformed experimental research prototypes into <strong>scalable, maintainable ML services</strong> with improved cross-team handoff quality.</li>
+            <li>Containerized ML systems using <strong>Docker</strong>, enabling consistent, reproducible deployments across multi-cloud and on-premises environments and eliminating environment-related failures.</li>
+            <li>Transformed experimental research prototypes into scalable, maintainable ML services, improving production stability and cross-team engineering handoff quality.</li>
+            <li>Engineered <strong>LLM-powered automation pipelines</strong> integrated with messaging APIs and backend services, dramatically reducing manual research overhead and accelerating research-to-production turnaround.</li>
           </ul>
         </div>
       </div>
@@ -2406,28 +2440,58 @@ footer a:hover { color: var(--accent); }
         <div class="cert-block-label">Selected Certifications</div>
         <ul class="cert-list">
           <li>
-            <span class="cert-name">Generative AI Language Modeling with Transformers</span>
-            <span class="cert-issuer">IBM · Coursera</span>
+            <span class="cert-name">Claude Code in Action</span>
+            <span class="cert-issuer">
+              <span>Anthropic</span>
+              <span class="cert-separator">|</span>
+              <a href="https://verify.skilljar.com/c/dqvptxn58pnb" target="_blank" rel="noopener" class="cert-link">Credential ID</a>
+            </span>
           </li>
           <li>
-            <span class="cert-name">AI Agents Using RAG and LangChain</span>
-            <span class="cert-issuer">IBM · Coursera</span>
+            <span class="cert-name">Introduction to Agentic AI</span>
+            <span class="cert-issuer">
+              <span>GenAI.Works</span>
+              <span class="cert-separator">|</span>
+              <a href="https://drive.google.com/file/d/1jQYQRH73adpqJqCZUxIVQCUVxaPtv8pf/view" target="_blank" rel="noopener" class="cert-link">Credential ID</a>
+            </span>
+          </li>
+          <li>
+            <span class="cert-name">Prompt Engineering</span>
+            <span class="cert-issuer">
+              <span>Dubai Future Foundation</span>
+              <span class="cert-separator">|</span>
+              <a href="https://omp.dub.ai/certificate/6tdnCGKwdzzO" target="_blank" rel="noopener" class="cert-link">Credential ID</a>
+            </span>
           </li>
           <li>
             <span class="cert-name">Building Systems with the ChatGPT API</span>
-            <span class="cert-issuer">DeepLearning.AI</span>
+            <span class="cert-issuer">
+              <span>DeepLearning.AI</span>
+              <span class="cert-separator">|</span>
+              <a href="https://learn.deeplearning.ai/accomplishments/e319ff38-d951-429e-abfb-c004702cb7cb" target="_blank" rel="noopener" class="cert-link">Credential ID</a>
+            </span>
           </li>
           <li>
-            <span class="cert-name">PyTorch Essential Training: Deep Learning</span>
-            <span class="cert-issuer">LinkedIn Learning</span>
+            <span class="cert-name">Google AI Essentials</span>
+            <span class="cert-issuer">
+              <span>Google via Coursera</span>
+              <span class="cert-separator">|</span>
+              <a href="https://www.credly.com/badges/d9fff900-5ec8-4caf-91e1-02735297f882/linked_in_profile" target="_blank" rel="noopener" class="cert-link">Credential ID</a>
+            </span>
+          </li>
+          <li>
+            <span class="cert-name">Foundations of Data Science</span>
+            <span class="cert-issuer">
+              <span>Coursera</span>
+              <span class="cert-separator">|</span>
+              <a href="https://www.coursera.org/account/accomplishments/certificate/QLNYSYS8L7YQ" target="_blank" rel="noopener" class="cert-link">Credential ID</a>
+            </span>
           </li>
           <li>
             <span class="cert-name">Edge Computing for Computer Vision</span>
-            <span class="cert-issuer">MachVIS · SEECS NUST</span>
-          </li>
-          <li>
-            <span class="cert-name">TensorFlow World Extended</span>
-            <span class="cert-issuer">GDG Cloud</span>
+            <span class="cert-issuer">
+              <span>MachVIS · SEECS NUST</span>
+            </span>
           </li>
         </ul>
       </div>
