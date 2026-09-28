@@ -689,6 +689,24 @@ h1.hero-title {
   transform: translateX(4px);
 }
 
+/* Upwork CTA styles */
+.btn-upwork {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background: linear-gradient(180deg, #14A800, #108A00);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 24px -8px rgba(15,168,90,0.4);
+}
+
+.btn-upwork svg { flex-shrink: 0; color: #fff; }
+.btn-upwork-text { font-size: 13px; }
+.btn-upwork:hover { transform: translateY(-3px); box-shadow: 0 14px 36px -12px rgba(15,168,90,0.45); }
+
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1701,6 +1719,50 @@ section {
   .profile-cards { grid-template-columns: 1fr; }
 }
 
+/* Upwork promo — theme-aware and responsive */
+.upwork-promo {
+  margin: 24px 0 16px;
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-card);
+  color: var(--ink);
+}
+.upwork-promo .promo-title {
+  font-weight: 700;
+  color: var(--lime);
+  margin-bottom: 6px;
+}
+.upwork-promo .promo-desc {
+  color: var(--ink-dim);
+  font-size: 15px;
+  line-height: 1.35;
+}
+.upwork-promo .promo-cta {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .upwork-promo { flex-direction: column; align-items: stretch; }
+  .upwork-promo .promo-cta { width: 100%; text-align: center; }
+}
+
+/* Light-theme override for the promo to keep the original bright look */
+:root[data-theme="light"] .upwork-promo {
+  background: linear-gradient(90deg,#f7fff9,#f0fff3);
+  border-color: rgba(14,172,80,0.08);
+  color: #0b0b0b;
+}
+
 /* ============================================================
    INQUIRY FORM
    ============================================================ */
@@ -2127,6 +2189,7 @@ footer a:hover { color: var(--accent); }
     <li><a href="#projects">Work</a></li>
     <li><a href="https://www.upwork.com/freelancers/shahzaibasif99" target="_blank" rel="noopener">Upwork</a></li>
     <li><a href="#contact">Contact</a></li>
+    
   </ul>
   <div class="nav-actions">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -2151,6 +2214,10 @@ footer a:hover { color: var(--accent); }
   </div>
 </nav>
 
+</div>
+
+
+
 <!-- ============================ HERO ============================ -->
 <header class="hero" id="top">
   <div class="hero-grid"></div>
@@ -2163,17 +2230,21 @@ footer a:hover { color: var(--accent); }
 
     <h1 class="hero-title">
       <span class="line">Shaping</span>
-      <span class="line"><em>AI that ships.</em></span>
+      <span class="line"><em>IT that ships.</em></span>
     </h1>
 
     <div class="hero-bottom">
       <div class="hero-copy">
         <p class="hero-description">
-          I'm <strong>Shahzaib Asif</strong> — an Applied AI/ML Engineer with 5+ years shipping production systems across <em>Research</em>, <em>Development</em>, <em>Verification</em>, and <em>Support</em>. From cloud GPUs to silicon, I build the intelligence that actually makes it to customers.
+          I'm <strong>Shahzaib Asif</strong> — an Applied AI/ML Engineer with 7+ years shipping production systems across <em>Research</em>, <em>Development</em>, <em>Verification</em>, and <em>Support</em>. From cloud GPUs to silicon, I build the intelligence that actually makes it to customers.
         </p>
         <div class="hero-ctas">
           <a href="#contact" class="btn-primary">Start a project</a>
+          <a href="https://www.upwork.com/freelancers/shahzaibasif99" target="_blank" rel="noopener" class="btn-upwork" aria-label="Open Upwork profile (opens in new tab)" title="Upwork — 100% Job Success">
+            <span class="btn-upwork-text">Upwork · 100% JSS</span>
+          </a>
           <a href="#projects" class="btn-secondary">See my work</a>
+
         </div>
       </div>
 
@@ -2183,12 +2254,12 @@ footer a:hover { color: var(--accent); }
 
         <div class="floating-chip chip-left">
           <span class="chip-label">Latency</span>
-          <strong>45ms</strong>
+          <strong>7 ms</strong>
         </div>
 
         <div class="floating-chip chip-right">
           <span class="chip-label">Uptime</span>
-          <strong>99.9%</strong>
+          <strong>99.7 %</strong>
         </div>
 
         <div class="visual-card">
@@ -2228,19 +2299,23 @@ footer a:hover { color: var(--accent); }
   </div>
 </header>
 
+
 <!-- ============================ TECH MARQUEE ============================ -->
 <div class="tech-marquee">
   <div class="marquee-track">
-    <span class="marquee-item">PyTorch</span>
+    <!-- <span class="marquee-item">PyTorch</span> -->
     <span class="marquee-item"><em>Computer Vision</em></span>
     <span class="marquee-item">CUDA</span>
+    <span class="marquee-item">AI Automation</span>
+    <span class="marquee-item"><em>Claude Code</em></span>
     <span class="marquee-item">Docker</span>
     <span class="marquee-item">Linux</span>
     <span class="marquee-item"><em>Edge AI</em></span>
     <span class="marquee-item">NVIDIA Jetson</span>
-    <span class="marquee-item">TensorFlow</span>
+    <!-- <span class="marquee-item">TensorFlow</span> -->
     <span class="marquee-item"><em>MLOps</em></span>
     <span class="marquee-item">OpenCV</span>
+    <span class="marquee-item"><em>FastAPI</em></span>
     <span class="marquee-item">PyTorch</span>
     <span class="marquee-item"><em>Computer Vision</em></span>
     <span class="marquee-item">CUDA</span>
@@ -2257,6 +2332,18 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
+<div class="footer-promo">
+  <div class="footer-promo-inner">
+    <span class="promo-badge">Limited Offer</span>
+    <div class="promo-text">
+      <span class="promo-main">Let's start now &amp; get <em>7 % off</em></span>
+      <a href="#contact" class="promo-cta">Send Inquiry
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- ============================ AT A GLANCE ============================ -->
 <section id="glance">
   <div class="section-inner">
@@ -2265,28 +2352,28 @@ footer a:hover { color: var(--accent); }
         <span>01 — At a Glance</span>
         <span>By the numbers</span>
       </div>
-      <h2 class="section-title">Five years. <em>Real impact.</em><br>Measurable outcomes.</h2>
+      <h2 class="section-title">Applied <em>Intelligence, Real impact !</em><br>Measurable outcomes.</h2>
     </div>
 
     <div class="glance-strip">
       <div class="glance-block">
-        <div class="glance-val">05<em>+</em></div>
+        <div class="glance-val">7<em>+</em></div>
         <div class="glance-key">Years Experience</div>
       </div>
       <div class="glance-block">
-        <div class="glance-val">45<em>+</em></div>
+        <div class="glance-val">97<em>+</em></div>
         <div class="glance-key">AI Projects</div>
       </div>
       <div class="glance-block">
-        <div class="glance-val">$2.7M<em>+</em></div>
+        <div class="glance-val">$7.9M<em>+</em></div>
         <div class="glance-key">Cost Savings</div>
       </div>
       <div class="glance-block">
-        <div class="glance-val">100K<em>+</em></div>
+        <div class="glance-val">700K<em>+</em></div>
         <div class="glance-key">Images Analyzed</div>
       </div>
       <div class="glance-block">
-        <div class="glance-val">23<em>+</em></div>
+        <div class="glance-val">25<em>+</em></div>
         <div class="glance-key">Certifications</div>
       </div>
     </div>
@@ -2878,9 +2965,10 @@ footer a:hover { color: var(--accent); }
     <h2 class="contact-headline">Let's build<br>something <em>unforgettable.</em></h2>
     <p class="contact-subline">Got a project, a research problem, or a system that needs to scale? Send an inquiry below and I'll respond within 24–48 hours.</p>
 
+
     <!-- Profile cards -->
     <div class="profile-cards">
-      <a href="https://www.linkedin.com/in/shahzaib-asif/" target="_blank" rel="noopener" class="profile-card">
+      <!-- <a href="https://www.linkedin.com/in/shahzaib-asif/" target="_blank" rel="noopener" class="profile-card">
         <div class="profile-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -2890,11 +2978,11 @@ footer a:hover { color: var(--accent); }
         </div>
         <div>
           <div class="profile-label">LinkedIn</div>
-          <div class="profile-val">/in/shahzaib-asif</div>
+          <div class="profile-val">LinkedIn Profile</div>
         </div>
-      </a>
+      </a> -->
 
-      <a href="https://www.fiverr.com/strongframework" target="_blank" rel="noopener" class="profile-card">
+      <!-- <a href="https://www.fiverr.com/strongframework" target="_blank" rel="noopener" class="profile-card">
         <div class="profile-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
@@ -2905,22 +2993,49 @@ footer a:hover { color: var(--accent); }
           <div class="profile-label">Fiverr · Vetted Pro</div>
           <div class="profile-val">AI integration services</div>
         </div>
-      </a>
+      </a> -->
 
-      <a href="https://www.upwork.com/freelancers/shahzaibasif99" target="_blank" rel="noopener" class="profile-card">
+      <!-- <a href="https://www.upwork.com/freelancers/shahzaibasif99" target="_blank" rel="noopener" class="profile-card" aria-label="Open Upwork profile (opens in new tab)">
         <div class="profile-icon" style="background: rgba(14,172,80,0.12); border: 1px solid rgba(14,172,80,0.3); color: #0eac50;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M7 14c0 3.866 3.582 7 8 7 2.21 0 4-1.79 4-4V7h-3v10c0 .552-.448 1-1 1-2.761 0-5-2.239-5-5V5H7v9z"/>
+          <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 11.5c0-3 2.5-6 6-6s6 3 6 6v4" />
+              <circle cx="6.8" cy="7.3" r="1.4" />
+            </g>
           </svg>
         </div>
         <div>
-          <div class="profile-label">Upwork</div>
-          <div class="profile-val">/freelancers/shahzaibasif99</div>
+          <div class="profile-label">Upwork · 100% Job Success</div>
+          <div class="profile-val">Professional IT Services (Upwork). Contact for 0% commission.</div>
         </div>
-      </a>
+      </a> -->
+
+        <!-- Upwork promo -->
+    <div class="upwork-promo" role="region" aria-label="Upwork promotion">
+      <div style="flex:1; min-width:0;">
+        <div class="promo-title">Professional IT Services (Upwork)</div>
+        <div class="promo-desc">Reliable, end-to-end software, AI, and infrastructure solutions delivered on Upwork. Proven track record, fast onboarding, and transparent pricing — contact me for direct contracts with 0% commission.</div>
+      </div>
+      <a href="https://www.upwork.com/freelancers/shahzaibasif99" target="_blank" rel="noopener" class="promo-cta">Hire on Upwork</a>
     </div>
 
+    </div>
+
+    <div class="footer-promo">
+    <div class="footer-promo-inner">
+        <span class="promo-badge">Limited Offer</span>
+        <div class="promo-text">
+        <span class="promo-main">Let's start now &amp; get <em>7 % off</em></span>
+        <a href="#contact" class="promo-cta">Send Inquiry
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        </div>
+    </div>
+    </div>
+    
+
     <!-- Inquiry form -->
+
     <div class="inquiry-wrap">
       <div class="inquiry-topbar">
         <span class="inquiry-topbar-label">Project Inquiry</span>
@@ -3039,7 +3154,7 @@ footer a:hover { color: var(--accent); }
   <div class="footer-promo-inner">
     <span class="promo-badge">Limited Offer</span>
     <div class="promo-text">
-      <span class="promo-main">Let's start now &amp; get <em>27% off</em></span>
+      <span class="promo-main">Let's start now &amp; get <em>7 % off</em></span>
       <a href="#contact" class="promo-cta">Send Inquiry
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -3050,9 +3165,9 @@ footer a:hover { color: var(--accent); }
 <footer>
   <div>© 2026 · Shahzaib Asif — Crafted with precision</div>
     <div class="footer-links">
+    <a href="https://www.upwork.com/freelancers/shahzaibasif99" target="_blank" rel="noopener">Upwork</a>
     <a href="https://www.linkedin.com/in/shahzaib-asif/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://www.fiverr.com/strongframework" target="_blank" rel="noopener">Fiverr</a>
-    <a href="https://www.upwork.com/freelancers/shahzaibasif99" target="_blank" rel="noopener">Upwork</a>
     <a href="#contact">Contact</a>
   </div>
 </footer>
